@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Test5{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    <a href="{% url 'home' %}">home link</a>
+<br>
+    <a href="{% url 'page' number=1 %}">{% url 'page' 1 %}</a>
+    <br>
+    <a href="{% url 'test:test1' %}">test1</a>
+
+    <ul>
+        {% for r in res %}
+            <li>{{ r.pk }}, {{ r.name }}: {{ r.value }} - {{ r.tables2_count }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+</body>
+</html>

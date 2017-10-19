@@ -1,0 +1,15 @@
+{% extends 'main/index.html' %}
+{% load testfilters %}
+{% load testtags %}
+
+{% block title %}{{ block.super }} - Page{% endblock %}
+{% block content %}
+ page
+{{ var.attr2.attr2 }}
+
+{{ 'some string'|filter1 }}
+
+{% tag1 'aaaa' %}
+{% tag2 'aaaa' %}
+
+{% endblock %}
