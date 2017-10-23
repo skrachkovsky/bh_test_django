@@ -1,12 +1,24 @@
 from django.db import models
 
 
+class Table1Qs(models.QuerySet):
+    def field1_a(self):
+        return self.filter(fileld1='a')
+
+
+class Table1Manager(models.Manager):
+    def get_queryset(self):
+        return Table1Qs(self.model, using=self.db)
+
 class Table1(models.Model):
     name = models.CharField(max_length=255, null=False)
     value = models.DecimalField(max_digits=20, decimal_places=2, verbose_name='Value')
     field1 = models.CharField(max_length=20, null=False, unique=True)
     # tables4 = models.ManyToManyField('Table4', through='Table1_4', through_fields=['table1', 'table4'])
     tables4 = models.ManyToManyField('Table4')
+
+    objects = models.Manager()
+    objects2 = Table1Manager()
 
     class Meta:
         # app_label = 'main'
